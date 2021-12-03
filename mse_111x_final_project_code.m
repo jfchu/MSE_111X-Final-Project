@@ -150,18 +150,6 @@ title('Ratios Between Online and Offline Optimal Values', 'interpreter', 'latex'
 xlabel('first $k$ bids', 'interpreter', 'latex')
 ylabel('$\bar{y}^k/\bar{y}^n$', 'interpreter', 'latex')
 
-% SECPMD PLOT: accumulation of offline profit across bids
-% Primairly for demonstrating linearity
-figure(2)
-plot(length, off_solution_sum);
-title('Accumulation of Offline Algorithm Profit Across Bids', 'interpreter', 'latex');
-xlabel('number of bids', 'interpreter', 'latex');
-ylabel('current offline profit', 'interpreter', 'latex');
-
-% THIRD PLOT: difference between accumulation of profit across bids,
-% online solution (k = 50, 100, 200) and offline solution 
-% Acts as further commentary on quotients graph 
-
 % x-axis: 1 to n
 length = [];
 for i = 1:n
@@ -195,6 +183,19 @@ for i = 1:n
     sum_append = dot(bids(1:i), sol_200(1:i));
     solution_sum_200 = [solution_sum_200; sum_append];
 end
+
+% SECOND PLOT: accumulation of offline profit across bids
+% Primairly for demonstrating linearity
+
+figure(2)
+plot(length, off_solution_sum);
+title('Accumulation of Offline Algorithm Profit Across Bids', 'interpreter', 'latex');
+xlabel('number of bids', 'interpreter', 'latex');
+ylabel('current offline profit', 'interpreter', 'latex');
+
+% THIRD PLOT: difference between accumulation of profit across bids,
+% online solution (k = 50, 100, 200) and offline solution 
+% Acts as further commentary on quotients graph 
 
 figure(3)
 plot(length, solution_sum_50 - off_solution_sum);
